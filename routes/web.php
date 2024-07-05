@@ -3,6 +3,19 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\PieceController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\ToolController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\WorkshopController;
+use App\Http\Controllers\ExhibitionController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PointController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +46,20 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/newpost', [ProfileController::class, 'newpost'])->name('profile.newpost');
 });
 Route::get('/profile/{id}', [ProfileController::class, 'showOther'])->name('profile.showOther');
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('categories', CategoryController::class);
+    Route::resource('facilities', FacilityController::class);
+    Route::resource('instructors', InstructorController::class);
+    Route::resource('pieces', PieceController::class);
+    Route::resource('tags', TagController::class);
+    Route::resource('tools', ToolController::class);
+    Route::resource('books', BookController::class);
+    Route::resource('workshops', WorkshopController::class);
+    Route::resource('exhibitions', ExhibitionController::class);
+    Route::resource('comments', CommentController::class);
+    Route::resource('points', PointController::class);
+    Route::resource('posts', PostController::class);
+    Route::resource('applications', ApplicationController::class);
+});
 require __DIR__.'/auth.php';

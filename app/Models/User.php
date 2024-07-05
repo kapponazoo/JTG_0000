@@ -42,8 +42,28 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function profile()
+public function profile()
 {
     return $this->hasOne(UserProfile::class);
+}
+
+public function pieces()
+{
+    return $this->hasMany(Piece::class);
+}
+
+public function points()
+{
+    return $this->hasMany(Point::class);
+}
+
+public function posts()
+{
+    return $this->hasMany(Post::class);
+}
+
+public function applications()
+{
+    return $this->hasMany(Application::class);
 }
 }
