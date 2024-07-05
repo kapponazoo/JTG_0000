@@ -11,7 +11,7 @@ class CreateUserProfilesTable extends Migration
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->enum('role', ['布好きさん', '作家', '講師', 'ギャラリー', 'コレクター', '研究者']);
+            $table->enum('role', ['布好きさん', '作家', '講師', 'ギャラリー','バイヤー', 'コレクター', '研究者']);
             $table->text('description')->nullable();
             // 他に必要なカラムがあれば追加
             $table->timestamps();

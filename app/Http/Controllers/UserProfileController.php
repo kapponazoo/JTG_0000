@@ -4,43 +4,38 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Models\UserProfile;
 
-class UserProfileController extends Controller
+class ProfileController extends Controller
 {
-    public function create()
+    public function show()
     {
-        return view('profile.create');
+        $user = Auth::user();
+        $profile = $user->profile;
+        $isOwner = true;
+        return view('profile.index', compact('user', 'profile', 'isOwner'));
     }
 
-    public function store(Request $request)
+    public function showOther($id)
     {
-        $request->validate([
-            'role' => 'required|in:布好きさん, 作家, 講師, ギャラリー, コレクター, 研究者',
-            'description' => 'nullable|string',
-            // 他のバリデーションルール
-        ]);
-
-        $profile = new UserProfile();
-        $profile->user_id = Auth::id();
-        $profile->role = $request->input('role');
-        $profile->description = $request->input('description');
-        // 他のフィールドの設定
-        $profile->save();
-
-        return redirect('/profile')->with('status', 'プロフィールが作成されました');
+        $user = User::findOrFail($id);
+        $profile = $user->profile;
+        $isOwner = false;
+        return view('profile.index', compact('user', 'profile', 'isOwner'));
     }
 
     public function edit()
     {
-        $profile = Auth::user()->profile;
-        return view('profile.edit', compact('profile'));
+        $user = Auth::user();
+        $profile = $user->profile;
+        return view('profile.edit', compact('user', 'profile'));
     }
 
     public function update(Request $request)
     {
         $request->validate([
-            'role' => 'required|in:布好きさん, 作家, 講師, ギャラリー, コレクター, 研究者',
+            'role' => 'required|in:布好きさん, 作家, 講師, ギャラリー, バイヤー, コレクター, 研究者',
             'description' => 'nullable|string',
             // 他のバリデーションルール
         ]);
@@ -52,5 +47,24 @@ class UserProfileController extends Controller
         $profile->save();
 
         return redirect('/profile')->with('status', 'プロフィールが更新されました');
+    }
+
+    public function points()
+    {
+        $user = Auth::user();
+        $points = $user->points;
+        return view('profile.points', compact('user', 'points'));
+    }
+
+    public function posts()
+    {
+        $user = Auth::user();
+        $posts = $user->posts;
+        return view('profile.posts', compact('user', 'posts'));
+    }
+
+    public function newpost()
+    {
+        return view('profile.newpost');
     }
 }

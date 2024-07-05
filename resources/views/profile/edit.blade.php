@@ -15,7 +15,10 @@
                 <option value="作家" {{ $profile->role == '作家' ? 'selected' : '' }}>作家</option>
                 <option value="講師" {{ $profile->role == '講師' ? 'selected' : '' }}>講師</option>
                 <option value="ギャラリー" {{ $profile->role == 'ギャラリー' ? 'selected' : '' }}>ギャラリー</option>
+                <option value="バイヤー" {{ $profile->role == 'バイヤー' ? 'selected' : '' }}>バイヤー</option>
                 <option value="コレクター" {{ $profile->role == 'コレクター' ? 'selected' : '' }}>コレクター</option>
+                <option value="研究者" {{ $profile->role == '研究者' ? 'selected' : '' }}>研究者</option>
+                
             </select>
         </div>
         <div class="form-group">

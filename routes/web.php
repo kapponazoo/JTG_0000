@@ -23,17 +23,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
 //ログイン後のUSerProfile関係
 Route::middleware(['auth'])->group(function () {
-    Route::get('/profile/create', [UserProfileController::class, 'create'])->name('profile.create');
-    Route::post('/profile', [UserProfileController::class, 'store'])->name('profile.store');
-    Route::get('/profile/edit', [UserProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile', [UserProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/points', [ProfileController::class, 'points'])->name('profile.points');
+    Route::get('/profile/posts', [ProfileController::class, 'posts'])->name('profile.posts');
+    Route::get('/profile/newpost', [ProfileController::class, 'newpost'])->name('profile.newpost');
 });
+Route::get('/profile/{id}', [ProfileController::class, 'showOther'])->name('profile.showOther');
 require __DIR__.'/auth.php';

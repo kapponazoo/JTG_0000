@@ -2,59 +2,52 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+use App\Models\UserProfile;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
-    public function edit(Request $request): View
+    public function show()
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        $user = Auth::user();
+        $profile = $user->profile; // プロフィールを取得
+        $isOwner = true; // 自分のプロフィールであることを示す
+        return view('profile.index', compact('user', 'profile', 'isOwner'));
     }
 
-    /**
-     * Update the user's profile information.
-     */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function showOther($id)
     {
-        $request->user()->fill($request->validated());
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
-        $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        $user = User::findOrFail($id);
+        $profile = $user->profile; // プロフィールを取得
+        $isOwner = false; // 他者のプロフィールであることを示す
+        return view('profile.index', compact('user', 'profile', 'isOwner'));
     }
 
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request): RedirectResponse
+    public function update(Request $request)
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
+        $user = Auth::user();
+        $profile = $user->profile;
+        $profile->update($request->all());
+        return redirect('/profile')->with('status', 'プロフィールが更新されました');
+    }
 
-        $user = $request->user();
+    public function points()
+    {
+        $user = Auth::user();
+        $points = $user->points;
+        return view('profile.points', compact('user', 'points'));
+    }
 
-        Auth::logout();
+    public function posts()
+    {
+        $user = Auth::user();
+        $posts = $user->posts;
+        return view('profile.posts', compact('user', 'posts'));
+    }
 
-        $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
+    public function newpost()
+    {
+        return view('profile.newpost');
     }
 }
