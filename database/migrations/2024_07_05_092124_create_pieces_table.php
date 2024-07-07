@@ -4,31 +4,28 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreatePiecesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('pieces', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('title');
             $table->text('description');
-            $table->foreignId('category_id')->constrained('categories');
-            $table->string('image_path')->nullable();
+            $table->string('image_path');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->string('location')->nullable();
-            $table->foreignId('facility_id')->nullable()->constrained('facilities');
+            $table->string('type');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->text('comments')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('pieces');
     }
-};
+}

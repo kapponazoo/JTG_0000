@@ -9,6 +9,18 @@ class Piece extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'image_path',
+        'category_id',
+        'location',
+        'type',
+        'user_id',
+        'start_date',
+        'end_date'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -19,18 +31,8 @@ class Piece extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function facility()
-    {
-        return $this->belongsTo(Facility::class);
-    }
-
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
     }
 }

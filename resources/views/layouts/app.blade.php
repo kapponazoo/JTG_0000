@@ -3,8 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title')</title>
+    <title>@yield('title', 'Laravel Project')</title>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    @yield('styles')
 </head>
 <body>
     <div id="app">
@@ -14,6 +15,11 @@
         <main>
             @yield('content')
         </main>
+        <footer>
+            @yield('footer')
+        </footer>
     </div>
+    <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>

@@ -16,6 +16,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PointController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -62,4 +64,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('posts', PostController::class);
     Route::resource('applications', ApplicationController::class);
 });
+
+//pieceの設定
+Route::middleware(['auth'])->group(function () {
+    Route::get('/piece', [PieceController::class, 'create'])->name('piece.create');
+    Route::post('/piece', [PieceController::class, 'store'])->name('piece.store');
+});
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 require __DIR__.'/auth.php';
