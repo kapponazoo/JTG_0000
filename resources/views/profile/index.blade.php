@@ -30,9 +30,11 @@
     <h2>{{ $user->name }}</h2>
     @if ($isOwner)
         <div class="buttons">
-            <button onclick="location.href='/profile/points'">ポイント明細</button>
-            <button onclick="location.href='/profile/posts'">投稿管理</button>
-            <button onclick="location.href='/profile/newpost'">新規投稿</button>
+            <button onclick="location.href='/piece'">新規投稿</button>
+            <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                @csrf
+                <button type="submit">ログアウト</button>
+            </form>
         </div>
     @endif
     <div class="profile-details">

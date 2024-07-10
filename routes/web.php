@@ -30,9 +30,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -71,5 +69,5 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/piece', [PieceController::class, 'store'])->name('piece.store');
 });
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+
 require __DIR__.'/auth.php';
