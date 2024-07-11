@@ -31,6 +31,7 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -65,8 +66,9 @@ Route::middleware(['auth'])->group(function () {
 
 //pieceの設定
 Route::middleware(['auth'])->group(function () {
-    Route::get('/piece', [PieceController::class, 'create'])->name('piece.create');
-    Route::post('/piece', [PieceController::class, 'store'])->name('piece.store');
+    Route::get('/pieces/create', [PieceController::class, 'create'])->name('piece.create');
+    Route::post('/pieces', [PieceController::class, 'store'])->name('piece.store');
+    Route::get('/pieces/{id}', [PieceController::class, 'show'])->name('piece.show');
 });
 
 

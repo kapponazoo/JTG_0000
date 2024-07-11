@@ -3,22 +3,20 @@
 @section('title', 'ホーム')
 
 @section('header')
-<div class="header">
-    <h1>JAPAN TEXTILE NEWS</h1>
-    <p>布と糸の文化の情報サイト</p>
-</div>
+    <h2>今日の7枚</h2>
+    <p>ランダムで7枚表示されます。クリックすると詳細を表示します。画像の上を指でスライドして閲覧できます。</p>
 @endsection
 
 @section('content')
 <div class="container">
-    <h2>今日の7枚</h2>
-    <p>ランダムで7枚表示されます。クリックすると詳細を表示します。画像の上を指でスライドして閲覧できます。</p>
     <div class="swiper-container">
         <div class="swiper-wrapper">
             @foreach ($pieces as $piece)
                 <div class="swiper-slide">
                     <a href="#"><!-- ここに詳細ページへのリンクを追加 -->
-                        <img src="{{ asset('storage/' . $piece->image_path) }}" alt="{{ $piece->title }}">
+                        <div class="image-container">
+                            <img src="{{ asset('storage/' . $piece->image_path) }}" alt="{{ $piece->title }}">
+                        </div>
                     </a>
                 </div>
             @endforeach
@@ -51,22 +49,38 @@
 
 @section('styles')
 <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+<link rel="stylesheet" href="{{ asset('css/swiper.css') }}">
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 @endsection
 
 @section('scripts')
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
-    var swiper = new Swiper('.swiper-container', {
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        loop: true,
+    document.addEventListener('DOMContentLoaded', function () {
+        var swiper = new Swiper('.swiper-container', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            loop: true,
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                },
+                1024: {
+                    slidesPerView: 7,
+                    spaceBetween: 30,
+                },
+            }
+        });
     });
 </script>
 @endsection

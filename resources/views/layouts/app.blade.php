@@ -10,6 +10,11 @@
 <body>
     <div id="app">
         <header>
+                   <div>
+            <a href="/">
+                <x-application-logo-w class="w-20 h-20 fill-current text-gray-500" />
+            </a>
+        </div>
             @yield('header')
         </header>
         <main>

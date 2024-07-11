@@ -1,0 +1,44 @@
+/* 全体レイアウト */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.footer-menu {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Swiperのスタイル */
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-container {
+    width: 100%;
+    padding-top: 100%; /* 正方形にするためのトリック */
+    position: relative;
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

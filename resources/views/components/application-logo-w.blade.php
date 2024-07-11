@@ -1,0 +1,1 @@
+<div class="m-10"><img src="/images/JTG_logo_w.png" alt="JAPAN TEXTILE GEEKS" width="100%"></div>
