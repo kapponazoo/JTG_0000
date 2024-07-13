@@ -4,27 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Piece;
-use App\Models\Category; // Categoryモデルをインポート
-use App\Models\Tag; // Tagモデルをインポート
+use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 
 class PieceController extends Controller
 {
     public function create()
     {
-        $categories = Category::all(); // カテゴリーを取得
-        $tags = Tag::all(); // タグを取得
+        $categories = Category::all();
+        $tags = Tag::all();
 
-        // 都道府県のリスト
         $prefectures = [
-            '北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県', 
-            '茨城県', '栃木県', '群馬県', '埼玉県', '千葉県', '東京都', '神奈川県', 
-            '新潟県', '富山県', '石川県', '福井県', '山梨県', '長野県', 
-            '岐阜県', '静岡県', '愛知県', '三重県', 
-            '滋賀県', '京都府', '大阪府', '兵庫県', '奈良県', '和歌山県', 
-            '鳥取県', '島根県', '岡山県', '広島県', '山口県', 
-            '徳島県', '香川県', '愛媛県', '高知県', 
-            '福岡県', '佐賀県', '長崎県', '熊本県', '大分県', '宮崎県', '鹿児島県', 
+            '北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県',
+            '茨城県', '栃木県', '群馬県', '埼玉県', '千葉県', '東京都', '神奈川県',
+            '新潟県', '富山県', '石川県', '福井県', '山梨県', '長野県',
+            '岐阜県', '静岡県', '愛知県', '三重県',
+            '滋賀県', '京都府', '大阪府', '兵庫県', '奈良県', '和歌山県',
+            '鳥取県', '島根県', '岡山県', '広島県', '山口県',
+            '徳島県', '香川県', '愛媛県', '高知県',
+            '福岡県', '佐賀県', '長崎県', '熊本県', '大分県', '宮崎県', '鹿児島県',
             '沖縄県'
         ];
 
@@ -33,8 +32,6 @@ class PieceController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all()); // ここで入力データをダンプして確認する
-
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -71,17 +68,20 @@ class PieceController extends Controller
             'end_date' => $request->end_date,
         ]);
 
-        // タグを保存する
         $tags = [];
         $tagFields = [
-            'tags_origin', 'tags_material', 'tags_technique', 'tags_tool', 
-            'tags_person', 'tags_group', 'tags_event', 'tags_facility', 'tags_book'
+            'tags_origin' => '産地', 'tags_material' => '素材', 'tags_technique' => '技法',
+            'tags_tool' => '道具', 'tags_person' => 'ひと', 'tags_group' => '団体',
+            'tags_event' => 'イベント名', 'tags_facility' => '施設名', 'tags_book' => '書籍名'
         ];
 
-        foreach ($tagFields as $tagField) {
+        foreach ($tagFields as $tagField => $category) {
             if ($request->filled($tagField)) {
-                $tag = Tag::firstOrCreate(['name' => $request->$tagField]);
-                $tags[] = $tag->id;
+                $tagNames = explode(',', $request->$tagField);
+                foreach ($tagNames as $tagName) {
+                    $tag = Tag::firstOrCreate(['name' => trim($tagName), 'category' => $category]);
+                    $tags[] = $tag->id;
+                }
             }
         }
 
@@ -96,5 +96,11 @@ class PieceController extends Controller
     {
         $piece = Piece::with('tags', 'category')->findOrFail($id);
         return view('pieces.show', compact('piece'));
+    }
+
+    public function index()
+    {
+        $pieces = Piece::all();
+        return view('pieces.index', compact('pieces'));
     }
 }

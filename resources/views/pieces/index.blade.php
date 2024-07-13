@@ -1,36 +1,30 @@
 @extends('layouts.app')
 
+@section('title', '投稿一覧')
+
 @section('content')
-<div class="container">
-    <h1>Pieces</h1>
-    <a href="{{ route('pieces.create') }}" class="btn btn-primary">Create New Piece</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="container mx-auto py-8">
+    <h1 class="text-2xl font-semibold mb-6">投稿一覧</h1>
+    @if ($pieces->isEmpty())
+        <p>まだ投稿がありません。</p>
+    @else
+       <div class="bg-white">
+  <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+
             @foreach ($pieces as $piece)
-            <tr>
-                <td>{{ $piece->id }}</td>
-                <td>{{ $piece->title }}</td>
-                <td>{{ $piece->description }}</td>
-                <td>
-                    <a href="{{ route('pieces.show', $piece->id) }}" class="btn btn-info">View</a>
-                    <a href="{{ route('pieces.edit', $piece->id) }}" class="btn btn-warning">Edit</a>
-                    <form action="{{ route('pieces.destroy', $piece->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
+                
+                   <a href="{{ route('piece.show', $piece->id) }}" class="group">
+        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+          <img src="{{ asset('storage/' . $piece->image_path) }}" alt="{{ $piece->title }}" class="h-full w-full object-cover object-center group-hover:opacity-75">
+        </div>
+   
+      </a>
             @endforeach
-        </tbody>
-    </table>
+    </div>
+  </div>
+
+    @endif
 </div>
 @endsection

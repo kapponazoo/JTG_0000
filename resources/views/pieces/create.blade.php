@@ -5,6 +5,17 @@
 @section('content')
 <div class="container mx-auto py-8">
     <h1 class="text-2xl font-semibold mb-6">新規投稿</h1>
+
+    @if ($errors->any())
+        <div class="mb-4">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="text-red-500">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{ route('piece.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-4">
@@ -35,6 +46,7 @@
         <div class="mb-4">
             <label for="type" class="block text-sm font-medium text-gray-700">種別</label>
             <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="type" name="type" required>
+                <option value="">種別を選択</option>
                 <option value="素材">素材</option>
                 <option value="糸">糸</option>
                 <option value="布">布</option>
@@ -45,17 +57,26 @@
             </select>
         </div>
         <div class="mb-4">
-            <label for="tags" class="block text-sm font-medium text-gray-700">タグ</label>
+            <label for="category_id" class="block text-sm font-medium text-gray-700">カテゴリ</label>
+            <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="category_id" name="category_id" required>
+                <option value="">カテゴリを選択</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="tags" class="block text-sm font-medium text-gray-700">タグ (カンマ区切りで入力)</label>
             <div class="mt-1">
-                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_origin" name="tags_origin" placeholder="産地">
-                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_material" name="tags_material" placeholder="素材">
-                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_technique" name="tags_technique" placeholder="技法">
-                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_tool" name="tags_tool" placeholder="道具">
-                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_person" name="tags_person" placeholder="ひと">
-                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_group" name="tags_group" placeholder="団体">
-                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_event" name="tags_event" placeholder="イベント名">
-                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_facility" name="tags_facility" placeholder="施設名">
-                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_book" name="tags_book" placeholder="書籍名">
+                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_origin" name="tags_origin" placeholder="産地 (カンマ区切りで入力)">
+                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_material" name="tags_material" placeholder="素材 (カンマ区切りで入力)">
+                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_technique" name="tags_technique" placeholder="技法 (カンマ区切りで入力)">
+                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_tool" name="tags_tool" placeholder="道具 (カンマ区切りで入力)">
+                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_person" name="tags_person" placeholder="ひと (カンマ区切りで入力)">
+                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_group" name="tags_group" placeholder="団体 (カンマ区切りで入力)">
+                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_event" name="tags_event" placeholder="イベント名 (カンマ区切りで入力)">
+                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_facility" name="tags_facility" placeholder="施設名 (カンマ区切りで入力)">
+                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="tags_book" name="tags_book" placeholder="書籍名 (カンマ区切りで入力)">
             </div>
         </div>
         <div class="mb-4">

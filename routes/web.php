@@ -64,12 +64,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('applications', ApplicationController::class);
 });
 
-//pieceの設定
+// pieceの設定
 Route::middleware(['auth'])->group(function () {
+    Route::get('/pieces', [PieceController::class, 'index'])->name('piece.index');
     Route::get('/pieces/create', [PieceController::class, 'create'])->name('piece.create');
     Route::post('/pieces', [PieceController::class, 'store'])->name('piece.store');
     Route::get('/pieces/{id}', [PieceController::class, 'show'])->name('piece.show');
 });
-
 
 require __DIR__.'/auth.php';

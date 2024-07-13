@@ -30,7 +30,7 @@
     <h2>{{ $user->name }}</h2>
     @if ($isOwner)
         <div class="buttons">
-            <button onclick="location.href='/piece'">新規投稿</button>
+            <button onclick="location.href='pieces/create'">新規投稿</button>
             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                 @csrf
                 <button type="submit">ログアウト</button>

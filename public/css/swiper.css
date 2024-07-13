@@ -1,3 +1,5 @@
+@import 'swiper/swiper-bundle.css'; // 修正
+
 /* 全体レイアウト */
 .container {
     width: 100%;
