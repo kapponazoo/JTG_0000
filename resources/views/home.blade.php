@@ -3,6 +3,7 @@
 @section('title', 'ホーム')
 
 @section('header')
+
     <h2>今日の7枚</h2>
     <p>ランダムで7枚表示されます。クリックすると詳細を表示します。画像の上を指でスライドして閲覧できます。</p>
 @endsection
@@ -13,11 +14,11 @@
         <div class="swiper-wrapper">
             @foreach ($pieces as $piece)
                 <div class="swiper-slide">
-                    <a href="#"><!-- ここに詳細ページへのリンクを追加 -->
-                        <div class="image-container">
+                    <div class="image-container">
+                        <a href="{{ route('piece.show', $piece->id) }}">
                             <img src="{{ asset('storage/' . $piece->image_path) }}" alt="{{ $piece->title }}">
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
             @endforeach
         </div>
@@ -29,11 +30,11 @@
 @endsection
 
 @section('footer')
-<!-- ここにカスタムフッターコンテンツが必要な場合は追加します -->
+
 @endsection
 
 @section('styles')
-
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 <link rel="stylesheet" href="{{ asset('css/swiper.css') }}">
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 @endsection
@@ -55,9 +56,11 @@
             grabCursor: true,
             centeredSlides: true,
             loop: true,
+            slidesPerView: 1,
+            spaceBetween: 10,
             breakpoints: {
                 640: {
-                    slidesPerView: 1,
+                    slidesPerView: 1.3,
                     spaceBetween: 10,
                 },
                 1024: {

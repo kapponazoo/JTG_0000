@@ -1,5 +1,3 @@
-@import 'swiper/swiper-bundle.css'; // 修正
-
 /* 全体レイアウト */
 .container {
     width: 100%;
@@ -17,10 +15,17 @@
     text-align: center;
 }
 
+.footer-link {
+    display: inline-block;
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+}
+
 /* Swiperのスタイル */
 .swiper-container {
     width: 100%;
-    height: 100%;
+    height: auto; /* 高さを自動に調整 */
 }
 
 .swiper-slide {
@@ -34,6 +39,7 @@
     width: 100%;
     padding-top: 100%; /* 正方形にするためのトリック */
     position: relative;
+    max-height: 300px; /* 高さを制限 */
 }
 
 .image-container img {

@@ -3,6 +3,7 @@ import Alpine from 'alpinejs';
 import Swiper, { Navigation, Pagination } from 'swiper';
 import 'swiper/swiper-bundle.css';
 
+
 import '../css/app.css'; // Tailwind CSSのみ
 
 window.Alpine = Alpine;

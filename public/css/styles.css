@@ -1,3 +1,10 @@
+
+#wrapper{width: 390px;
+    border: 1px solid #CCCCCC;
+    margin: 0 auto;
+    padding: 1em;
+}
+
 .buttons button {
     background-color: #f0f0f0;
     border: none;
