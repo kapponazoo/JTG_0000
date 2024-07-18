@@ -1,17 +1,18 @@
 {
+  "node_modules/swiper/swiper-bundle.min.css": {
+    "file": "assets/swiper-bundle-D_JgF5ni.css",
+    "src": "node_modules/swiper/swiper-bundle.min.css",
+    "isEntry": true
+  },
   "resources/css/app.css": {
-    "file": "assets/app-DtfEN4ft.css",
+    "file": "assets/app-DvLNXPuO.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-C3i4Yx6i.js",
+    "file": "assets/app-Cs0QkU1O.js",
     "name": "app",
     "src": "resources/js/app.js",
-    "isEntry": true,
-    "css": [
-      "assets/app-v2Sj8WLY.css",
-      "assets/app-DtfEN4ft.css"
-    ]
+    "isEntry": true
   }
 }

@@ -64,6 +64,7 @@ class PieceController extends Controller
             'prefecture' => $request->prefecture,
             'type' => $request->type,
             'user_id' => Auth::id(),
+            
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
         ]);

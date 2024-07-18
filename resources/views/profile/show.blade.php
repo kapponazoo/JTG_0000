@@ -1,21 +1,26 @@
 @extends('layouts.app')
 
-@section('title', $piece->title)
+@section('title', 'プロフィール')
 
 @section('content')
-<div class="container mx-auto py-8">
-    <h1 class="text-2xl font-semibold mb-6">{{ $piece->title }}</h1>
-    <img src="{{ asset('storage/' . $piece->image_path) }}" alt="{{ $piece->title }}" class="w-full h-auto mb-4">
-    <p class="text-gray-700 mb-4">{{ $piece->description }}</p>
-    <p class="text-gray-700 mb-4"><strong>撮影場所:</strong> {{ $piece->location }} ({{ $piece->prefecture }})</p>
-    <p class="text-gray-700 mb-4"><strong>種別:</strong> {{ $piece->type }}</p>
-    <p class="text-gray-700 mb-4"><strong>カテゴリ:</strong> {{ $piece->category->name }}</p>
-    <p class="text-gray-700 mb-4"><strong>タグ:</strong> 
-        @foreach ($piece->tags as $tag)
-            <span class="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">{{ $tag->name }}</span>
-        @endforeach
-    </p>
-    <p class="text-gray-700 mb-4"><strong>表示期間:</strong> {{ $piece->start_date }} - {{ $piece->end_date }}</p>
-    <p class="text-gray-700 mb-4"><strong>コメント:</strong> {{ $piece->comments }}</p>
-</div>
+
+    <h1 class="text-xl font-semibold mb-6">{{ $user->name }}のプロフィール</h1>
+    @if ($profile)
+        <p>{{ $profile->description }}</p>
+        @if ($profile->profile_image)
+            <img src="{{ asset('storage/' . $profile->profile_image) }}" alt="プロフィール画像">
+        @endif
+        <h2>投稿一覧</h2>
+        <ul>
+            @foreach ($pieces as $piece)
+                <li>{{ $piece->title }}</li>
+            @endforeach
+        </ul>
+    @else
+        <p class="my-20 text-center">プロフィールが作成されていません。</p>
+        
+        <button onclick="{{ route('profile.create') }}" class="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-sky-500 px-6 font-medium text-neutral-50"><span class="absolute h-56 w-32 rounded-full bg-neutral-950 transition-all duration-300 group-hover:h-0 group-hover:w-0"></span><span class="relative">プロフィールを作成する</span></button>
+
+    @endif
+
 @endsection

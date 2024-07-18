@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -42,28 +41,29 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-public function profile()
-{
-    return $this->hasOne(UserProfile::class);
-}
 
-public function pieces()
-{
-    return $this->hasMany(Piece::class);
-}
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class);
+    }
 
-public function points()
-{
-    return $this->hasMany(Point::class);
-}
+    public function pieces()
+    {
+        return $this->hasMany(Piece::class);
+    }
 
-public function posts()
-{
-    return $this->hasMany(Post::class);
-}
+    public function points()
+    {
+        return $this->hasMany(Point::class);
+    }
 
-public function applications()
-{
-    return $this->hasMany(Application::class);
-}
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
+    }
 }

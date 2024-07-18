@@ -3,7 +3,7 @@
 @section('title', 'プロフィール編集')
 
 @section('content')
-<div class="container">
+<div class="container p-6">
     <h1>プロフィール編集</h1>
     <form action="{{ route('profile.update') }}" method="POST">
         @csrf

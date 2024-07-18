@@ -37,17 +37,10 @@
             </form>
         </div>
     @endif
-    <div class="profile-details">
-        <p>お名前: {{ $user->name }}</p>
-        <p>ユーザーID: {{ $user->username }}</p>
-        <p>メールアドレス: {{ $user->email }}</p>
-        <p>ステータス: {{ $profile ? $profile->role : '' }}</p>
-        <p>自己紹介: {{ $profile ? $profile->description : '' }}</p>
-        <p>ポイント: {{ $user->points }}</p>
-    </div>
+    
 </div>
 @endsection
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
 @endsection

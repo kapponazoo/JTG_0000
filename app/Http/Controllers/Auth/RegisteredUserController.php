@@ -46,6 +46,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        // プロフィール作成ページにリダイレクト
+        return redirect()->route('profile.create');
     }
 }

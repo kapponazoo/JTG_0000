@@ -1,0 +1,84 @@
+h1 {
+    text-align: center;
+}
+
+h1 img {
+    width: 76%;
+    margin: 0 auto;
+}
+
+.today7 {
+    color: #A6695B;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.wrapper {
+    width: 390px;
+    height: 644px;
+    background-image: url('/images/bg.jpg');
+    margin: 3em auto;
+    border-radius: 20px;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu {
+    margin-top: 20px;
+}
+
+.menu button {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.footer-menu {
+    background-color: #f0f0f0;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-radius: 0 0 20px 20px;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-menu a i {
+    font-family: 'Font Awesome 5 Free';
+    color: #141F26;
+}
+
+.footer-link {
+    text-align: center;
+    flex: 1;
+    text-decoration: none;
+}
+
+.footer-link i {
+    display: block;
+    font-size: 24px;
+}
+
+.mizuiro {
+    color: #38bdf8;
+    font-size: .8em;
+    font-weight: bold;
+}
+.scroll-box::-webkit-scrollbar {
+  background: #ffffff;
+  width: 5px;
+  height: 5px;
+}
+.scroll-box::-webkit-scrollbar-thumb {
+  background-color: #38bdf8;
+  
+  
+}

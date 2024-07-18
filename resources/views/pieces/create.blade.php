@@ -3,8 +3,7 @@
 @section('title', '新規投稿')
 
 @section('content')
-<div class="container mx-auto py-8">
-    <h1 class="text-2xl font-semibold mb-6">新規投稿</h1>
+    <h1 class="text-xl font-semibold mb-6">新規投稿</h1>
 
     @if ($errors->any())
         <div class="mb-4">
@@ -28,7 +27,10 @@
         </div>
         <div class="mb-4">
             <label for="image" class="block text-sm font-medium text-gray-700">画像</label>
-            <input type="file" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="image" name="image" required>
+             <label class="dropimage">
+    <input title="クリックまたは画像ドロップしてください" type="file" id="image" name="image" required>
+  </label>
+            
         </div>
         <div class="mb-4">
             <label for="location" class="block text-sm font-medium text-gray-700">撮影場所</label>
@@ -91,7 +93,16 @@
             <label for="comments" class="block text-sm font-medium text-gray-700">コメント</label>
             <textarea class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="comments" name="comments"></textarea>
         </div>
-        <button type="submit" class="w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">投稿内容を確認</button>
+        <button type="submit" class="w-full bg-sky-600 text-white font-semibold py-2 px-4 rounded-md shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">投稿内容を確認</button>
     </form>
-</div>
+
+@endsection
+
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/picnic.css') }}">
+
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/picnic.js') }}"></script>
 @endsection
