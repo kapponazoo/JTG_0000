@@ -32,6 +32,8 @@
             <a href="/info" class="footer-link"><i class="fas fa-user"></i> お知らせ</a>
         </footer>
     </div>
+    
+</div>
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
 </body>

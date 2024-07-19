@@ -100,8 +100,8 @@ class PieceController extends Controller
     }
 
     public function index()
-    {
-        $pieces = Piece::all();
-        return view('pieces.index', compact('pieces'));
-    }
+{
+    $pieces = Piece::paginate(12);
+    return view('pieces.index', compact('pieces'));
+}
 }

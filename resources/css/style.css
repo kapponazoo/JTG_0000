@@ -72,12 +72,12 @@ h1 img {
     font-size: .8em;
     font-weight: bold;
 }
-.scroll-box::-webkit-scrollbar {
+main::-webkit-scrollbar {
   background: #ffffff;
-  width: 5px;
+  width: 2px;
   height: 5px;
 }
-.scroll-box::-webkit-scrollbar-thumb {
+main::-webkit-scrollbar-thumb {
   background-color: #38bdf8;
   
   

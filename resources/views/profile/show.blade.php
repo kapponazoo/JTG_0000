@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1 class="text-xl font-semibold mb-6">{{ $user->name }}のプロフィール</h1>
+    <h1 class="text-xl font-semibold mb-6 mt40">{{ $user->name }}のプロフィール</h1>
     @if ($profile)
         <p>{{ $profile->description }}</p>
         @if ($profile->profile_image)
@@ -19,8 +19,12 @@
     @else
         <p class="my-20 text-center">プロフィールが作成されていません。</p>
         
-        <button onclick="{{ route('profile.create') }}" class="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-sky-500 px-6 font-medium text-neutral-50"><span class="absolute h-56 w-32 rounded-full bg-neutral-950 transition-all duration-300 group-hover:h-0 group-hover:w-0"></span><span class="relative">プロフィールを作成する</span></button>
-
+        <div class="flex justify-center">
+    <a href="{{ route('profile.create') }}" class="group relative w-full inline-flex h-12 items-center justify-center overflow-hidden rounded-lg bg-sky-500 px-6 font-medium m-4 text-neutral-50">
+        <span class="absolute h-56 w-full rounded-lg bg-neutral-950 transition-all duration-300 group-hover:h-0 group-hover:w-0"></span>
+        <span class="relative">プロフィールを作成する</span>
+    </a>
+</div>
     @endif
 
 @endsection
