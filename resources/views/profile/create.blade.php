@@ -3,7 +3,7 @@
 @section('title', 'プロフィール作成')
 
 @section('content')
-<div class="container p-6">
+
     <h1 class="text-xl font-semibold mb-6">プロフィール作成</h1>
     @if ($errors->any())
         <div class="mb-4">
@@ -37,9 +37,9 @@
     <input title="クリックまたはドロップしてください" type="file" id="profile_image" name="profile_image">
   </label>
         </div>
-        <button type="submit" class="w-full bg-sky-600 text-white font-semibold py-2 px-4 rounded-md shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">作成</button>
+        <button class="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-lg bg-neutral-950 px-6 font-medium text-neutral-50 w-full"><span class="absolute h-0 w-0 rounded-lg bg-sky-500 transition-all duration-300 group-hover:h-56 group-hover:w-full"></span><span class="relative">作成</span></button>
     </form>
-</div>
+
 @endsection
 
 @section('styles')

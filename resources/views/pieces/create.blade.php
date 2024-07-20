@@ -93,8 +93,10 @@
             <label for="comments" class="block text-sm font-medium text-gray-700">コメント</label>
             <textarea class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="comments" name="comments"></textarea>
         </div>
-        <button type="submit" class="w-full bg-sky-600 text-white font-semibold py-2 px-4 rounded-md shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">投稿内容を確認</button>
-    </form>
+    
+   <button type="submit" class="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-lg bg-neutral-950 px-6 font-medium text-neutral-50 w-full"><span class="absolute h-0 w-0 rounded-lg bg-sky-500 transition-all duration-300 group-hover:h-56 group-hover:w-full"></span><span class="relative">投稿する</span></button>
+   
+   </form>
 
 @endsection
 
