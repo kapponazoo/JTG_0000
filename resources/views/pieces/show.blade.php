@@ -13,10 +13,10 @@
    </div>
     <p class="mb-4 mt-6"><strong>カテゴリ:</strong> {{ $piece->category->name }}</p>
     <p class="mb-4"><strong>撮影場所:</strong> {{ $piece->location }}</p>
-    <p class="mb-4"><strong>都道府県:</strong> {{ $piece->prefecture }}</p>
+    <!--p class="mb-4"><strong>都道府県:</strong> {{ $piece->prefecture }}</p-->
     <p class="mb-4"><strong>種別:</strong> {{ $piece->type }}</p>
-    <p class="mb-4"><strong>開始日:</strong> {{ $piece->start_date }}</p>
-    <p class="mb-4"><strong>終了日:</strong> {{ $piece->end_date }}</p>
+    <!--p class="mb-4"><strong>開始日:</strong> {{ $piece->start_date }}</p--
+    <!p class="mb-4"><strong>終了日:</strong> {{ $piece->end_date }}</p-->
     <div class="mb-4">
         <strong>タグ:</strong>
         @foreach ($piece->tags as $tag)
