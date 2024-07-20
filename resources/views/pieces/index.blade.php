@@ -3,7 +3,6 @@
 @section('title', '投稿一覧')
 
 @section('content')
-
     <h1 class="text-2xl font-semibold mt-6">投稿一覧</h1>
     @if ($pieces->isEmpty())
         <p>まだ投稿がありません。</p>
