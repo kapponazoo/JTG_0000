@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PieceController;
+use App\Http\Controllers\InfoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,17 +34,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/newpost', [ProfileController::class, 'newpost'])->name('profile.newpost');
 });
 
-// 認証不要のルート//
-Route::get('/pieces', [PieceController::class, 'index'])->name('piece.index');
-    Route::get('/pieces/{id}', [PieceController::class, 'show'])->name('piece.show');
-
-// 認証が必要なルート//
-Route::middleware(['auth'])->group(function () {
-    Route::get('/pieces/create', [PieceController::class, 'create'])->name('piece.create');
-    Route::post('/pieces', [PieceController::class, 'store'])->name('piece.store');
-
-});
-
 
 
 // pieceの設定
@@ -52,5 +42,16 @@ Route::get('/pieces/create', [PieceController::class, 'create'])->name('piece.cr
 Route::post('/pieces', [PieceController::class, 'store'])->name('piece.store');
 Route::get('/pieces/{id}', [PieceController::class, 'show'])->name('piece.show');
 
+// 認証不要のルート//
+Route::get('/pieces', [PieceController::class, 'index'])->name('piece.index');
+Route::get('/pieces/{id}', [PieceController::class, 'show'])->name('piece.show');
+    
+// 認証が必要なルート//
+Route::middleware(['auth'])->group(function () {
+Route::get('/pieces/create', [PieceController::class, 'create'])->name('piece.create');
+Route::post('/pieces', [PieceController::class, 'store'])->name('piece.store');
+});
+
+Route::get('/info', [InfoController::class, 'index'])->name('info.index');
 
 require __DIR__.'/auth.php';

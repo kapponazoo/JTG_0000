@@ -9,8 +9,9 @@ class CategorySeeder extends Seeder
 {
     public function run()
     {
-        Category::create(['name' => 'カテゴリ1']);
-        Category::create(['name' => 'カテゴリ2']);
-        Category::create(['name' => 'カテゴリ3']);
+        Category::create(['name' => '創作活動']);
+        Category::create(['name' => '民族染織']);
+        Category::create(['name' => '伝統工芸']);
+        Category::create(['name' => 'テキスタイルアート']);
     }
 }

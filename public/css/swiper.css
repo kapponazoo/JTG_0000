@@ -29,8 +29,14 @@
 .swiper-slide-active {
     opacity: 1;
     transform: scale(1);
+    
 }
 
 .swiper-button-next, .swiper-button-prev {
     color: #202840;
+}
+.pieceone{
+    text-indent:100%;
+	white-space:nowrap;
+	overflow:hidden;
 }

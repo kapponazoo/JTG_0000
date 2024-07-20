@@ -4,13 +4,13 @@
 
 @section('content')
 
-    <h1 class="text-xl font-semibold mb-6 mt40">{{ $user->name }}のプロフィール</h1>
+    <h1 class="text-xl font-semibold my-10">{{ $user->name }}のプロフィール</h1>
     @if ($profile)
-        <p>{{ $profile->description }}</p>
+       <p class="border-gray-400">{{ $profile->description }}</p>
         @if ($profile->profile_image)
             <img src="{{ asset('storage/' . $profile->profile_image) }}" alt="プロフィール画像">
         @endif
-        <h2>投稿一覧</h2>
+        <h2 class="text-lg font-semibold">投稿一覧</h2>
         <ul>
             @foreach ($pieces as $piece)
                 <li>{{ $piece->title }}</li>

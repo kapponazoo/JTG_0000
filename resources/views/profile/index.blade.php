@@ -4,7 +4,7 @@
 
 @section('header')
 <div class="back-button">&lt; <a href="/">戻る</a></div>
-<h1>プロフィール</h1>
+<h1 class="text-2xl font-semibold mt-6">プロフィール</h1>
 <div class="back-button" style="visibility: hidden;">&lt;</div>
 @endsection
 

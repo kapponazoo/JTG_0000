@@ -78,3 +78,18 @@ main::-webkit-scrollbar {
 main::-webkit-scrollbar-thumb {
   background-color: #cccccc;
 }
+
+.pagination-container nav {
+    display: block!important; /* flexを解除 */
+    text-align: center; /* 中央揃え */
+    margin-top: 1rem;
+}
+.pagination-container nav div{
+    display: block!important; /* flexを解除 */
+    text-align: center; /* 中央揃え */
+    margin-top: 1rem;
+}
+
+.plus2{
+    padding: 0 4px 0 0;
+}

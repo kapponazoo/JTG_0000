@@ -14,9 +14,9 @@
 <body class="flex flex-col min-h-screen">
     <div class="wrapper shadow-lg border flex flex-col justify-between mx-auto">
         <header class="flex-grow-0">
-            <h1 class="text-center mt-10">
+            <h1 class="text-center mt-10 plus2">
                 <a href="/">
-                    <img src="/images/JTG_logo_w.png" alt="JAPAN TEXTILE GEEKS" width="100%">
+                    <img src="/images/JTG_logo_w.png" alt="JAPAN TEXTILE GEEKS" width="100%"">
                 </a>
             </h1>
             @yield('header')
@@ -29,11 +29,11 @@
             <a href="/profile" class="footer-link"><i class="fas fa-user"></i>マイページ</a>
             <a href="/pieces/create" class="footer-link"><i class="fas fa-pen"></i> 投稿</a>
             <a href="/pieces" class="footer-link"><i class="fas fa-layer-group"></i> 一覧</a>
-            <a href="/info" class="footer-link"><i class="fas fa-user"></i> お知らせ</a>
+            <a href="/info" class="footer-link"><i class="fas fa-info-circle"></i> お知らせ</a>
         </footer>
     </div>
     
-</div>
+
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
 </body>
