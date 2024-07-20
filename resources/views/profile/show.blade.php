@@ -3,19 +3,33 @@
 @section('title', 'プロフィール')
 
 @section('content')
+ <h1 class="text-xl font-semibold my-10">{{ $user->name }}のプロフィール</h1>
+ @if ($profile)
+    <div class="relative items-center w-full px-5 mx-auto">
+        <div class="lg:mx-auto flex flex-col w-full max-w-lg mb-12 text-center">
+@if ($profile->profile_image)
+<img alt="testimonial" class="inline-block object-cover object-center w-20 h-20 mx-auto mb-8 rounded-full" src="{{ asset('storage/' . $profile->profile_image) }}">
 
-    <h1 class="text-xl font-semibold my-10">{{ $user->name }}のプロフィール</h1>
-    @if ($profile)
-       <p class="border-gray-400">{{ $profile->description }}</p>
-        @if ($profile->profile_image)
-            <img src="{{ asset('storage/' . $profile->profile_image) }}" alt="プロフィール画像">
         @endif
-        <h2 class="text-lg font-semibold">投稿一覧</h2>
-        <ul>
-            @foreach ($pieces as $piece)
-                <li>{{ $piece->title }}</li>
-            @endforeach
-        </ul>
+            <p class="mx-auto text-base leading-relaxed text-gray-500">{{ $profile->description }}</p>
+            <h2 clas投稿一覧</h2>
+                
+                <div class="mx-auto max-w-2xl px-4 py-12">
+    
+    <div class="grid gap-x-6 gap-y-10 grid-cols-4">
+                @foreach ($pieces as $piece)
+                <a href="{{ route('piece.show', $piece->id) }}" class="group">
+        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+          <img src="{{ asset('storage/' . $piece->image_path) }}" alt="{{ $piece->title }}" class="h-full w-full object-cover object-center group-hover:opacity-75">
+        </div>
+   
+      </a>
+      
+      
+      @endforeach
+      </div></div>
+
+        
     @else
         <p class="my-20 text-center">プロフィールが作成されていません。</p>
         
@@ -26,5 +40,7 @@
     </a>
 </div>
     @endif
+        </div>
+    </div>
 
 @endsection

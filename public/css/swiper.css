@@ -32,6 +32,10 @@
     
 }
 
+.swiper-slide a{width: 100%;
+	height: 100%;
+	display: block;}
+
 .swiper-button-next, .swiper-button-prev {
     color: #202840;
 }
@@ -39,4 +43,5 @@
     text-indent:100%;
 	white-space:nowrap;
 	overflow:hidden;
+	
 }
