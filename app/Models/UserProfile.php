@@ -10,7 +10,7 @@ class UserProfile extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'role', 'description'
+        'user_id', 'role', 'description', 'profile_image'
         // 他に必要なカラムがあれば追加
     ];
 
